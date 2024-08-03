@@ -13,7 +13,6 @@ If the format is not this one, the line must be skipped.
 import sys
 import re
 
-
 def extract_input(input_line):
     '''Extracts sections of a line of an HTTP request log.'''
     log_pattern = (
@@ -25,14 +24,12 @@ def extract_input(input_line):
         return match.group('status_code'), int(match.group('file_size'))
     return None, None
 
-
 def print_statistics(total_file_size, status_codes_stats):
     '''Prints the accumulated statistics of the HTTP request log.'''
     print(f"File size: {total_file_size}")
     for status_code in sorted(status_codes_stats):
         if status_codes_stats[status_code] > 0:
             print(f"{status_code}: {status_codes_stats[status_code]}")
-
 
 def run():
     '''Starts the log parser.'''
@@ -61,7 +58,6 @@ def run():
         print_statistics(total_file_size, status_codes_stats)
     finally:
         print_statistics(total_file_size, status_codes_stats)
-
 
 if __name__ == '__main__':
     run()
